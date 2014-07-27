@@ -66,62 +66,10 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-201407254" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2014/07/27/201407254/" class="article-date">
-  <time datetime="2014-07-27T02:10:21.000Z" itemprop="datePublished">Jul 27 2014</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/ios/">ios</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/07/27/201407254/">ios7兼容方法四川转帖</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>﻿#### 1.所有的uiviewcontroller加如下方法。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">    - (<span class="keyword">void</span>) viewDidLayoutSubviews {</div><div class="line">        <span class="keyword">if</span> ([[[UIDevice currentDevice] systemVersion] floatValue] &gt;= <span class="number">7.0</span>){</div><div class="line">            <span class="built_in">CGRect</span> viewBounds = <span class="keyword">self</span><span class="variable">.view</span><span class="variable">.bounds</span>;</div><div class="line">            <span class="built_in">CGFloat</span> topBarOffset = <span class="keyword">self</span><span class="variable">.topLayoutGuide</span><span class="variable">.length</span>;</div><div class="line">            viewBounds<span class="variable">.origin</span><span class="variable">.y</span> = topBarOffset * -<span class="number">1</span>;</div><div class="line">            <span class="keyword">self</span><span class="variable">.view</span><span class="variable">.bounds</span> = viewBounds;</div><div class="line">            [[<span class="built_in">UIApplication</span> sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];</div><div class="line">        }</div><div class="line">    }</div></pre></td></tr></table></figure>
-
-<p>实现这个方法，然后在viewDidLoad里加一句</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>([<span class="keyword">self</span> respondsToSelector:<span class="keyword">@selector</span>(setAutomaticallyAdjustsScrollViewInsets:)])</div><div class="line">    <span class="keyword">self</span><span class="variable">.automaticallyAdjustsScrollViewInsets</span> = <span class="literal">NO</span>;</div></pre></td></tr></table></figure>
-
-<h4 id="2-在项目的plist文件里加View_controller-based_status_bar_appearance，值为no。">2.在项目的plist文件里加View controller-based status bar appearance，值为no。</h4>
-<p>再做ios7兼容的时候最好让所有的UIViewController继承一个自己定义的UIViewController，然后好统一管理。然后在这个自己定义的UIViewController里</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://reqianduan.com/2014/07/27/201407254/" data-id="lj07xqgte4r77blm" class="article-share-link">Share</a>
-      
-        <a href="http://reqianduan.com/2014/07/27/201407254/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ios/">ios</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
     <article id="post-2014072524" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2014/07/27/2014072524/" class="article-date">
-  <time datetime="2014-07-27T02:10:21.000Z" itemprop="datePublished">Jul 27 2014</time>
+  <time datetime="2014-07-27T10:02:03.000Z" itemprop="datePublished">Jul 27 2014</time>
 </a>
     
   <div class="article-category">
@@ -165,10 +113,10 @@
 
 
   
-    <article id="post-2014072518" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-201407255" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2014/07/27/2014072518/" class="article-date">
-  <time datetime="2014-07-27T02:10:21.000Z" itemprop="datePublished">Jul 27 2014</time>
+    <a href="/2014/07/27/201407255/" class="article-date">
+  <time datetime="2014-07-27T10:02:03.000Z" itemprop="datePublished">Jul 27 2014</time>
 </a>
     
   <div class="article-category">
@@ -183,7 +131,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2014/07/27/2014072518/">当你用到系统的视频播放器的时候想要淡入淡出的效果如下Only转载</a>
+      <a class="article-title" href="/2014/07/27/201407255/">iOS7上tableView的分割线左边短了一点Only转载</a>
     </h1>
   
 
@@ -191,17 +139,61 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">﻿    CATransition *<span class="variable">animation =</span> [CATransition animation];</div><div class="line">    animation.<span class="variable">delegate =</span> self;</div><div class="line">    animation.<span class="variable">duration =</span> <span class="number">0.7</span> ;  // 动画持续时间(秒)</div><div class="line">    animation.<span class="variable">timingFunction =</span> UIViewAnimationCurveEaseInOut;</div><div class="line">    animation.<span class="variable">type =</span> kCATransitionFade;//淡入淡出效果</div><div class="line">    [self.mediaPlayView.layer addAnimation:animation forKey:@\<span class="string">"animationFade\"</span>]</div></pre></td></tr></table></figure>
+        <p>﻿iOS7里面tableViewCell上面的分割线，左边少了20个像素，用下面的方法，可以让分割线完整显示出来</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> ([_tableView respondsToSelector:@selector(<span class="keyword">set</span>SeparatorInset:)]) {</div><div class="line">           [_tableView <span class="keyword">set</span>SeparatorInset:UIEdgeInsetsZero];</div><div class="line">       }</div></pre></td></tr></table></figure>
 
-
-<p>在适合的ViewController启动函数调用该方法，可以达到好的体验。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://reqianduan.com/2014/07/27/2014072518/" data-id="oe7tcozf7pnkvqv6" class="article-share-link">Share</a>
+      <a data-url="http://reqianduan.com/2014/07/27/201407255/" data-id="q5cdb1gfcouieexe" class="article-share-link">Share</a>
       
-        <a href="http://reqianduan.com/2014/07/27/2014072518/#disqus_thread" class="article-comment-link">Comments</a>
+        <a href="http://reqianduan.com/2014/07/27/201407255/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ios/">ios</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-201407250" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/07/27/201407250/" class="article-date">
+  <time datetime="2014-07-27T10:02:02.000Z" itemprop="datePublished">Jul 27 2014</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/ios/">ios</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/07/27/201407250/">9款优秀的免费测试框架帮你揪出app中的臭虫时光转帖</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="http://www.cocoachina.com/applenews/devnews/2013/1025/7242.html" target="_blank" rel="external">9款优秀的免费测试框架帮你揪出app中的臭虫时光转帖</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://reqianduan.com/2014/07/27/201407250/" data-id="7uiti1xkctm1igv9" class="article-share-link">Share</a>
+      
+        <a href="http://reqianduan.com/2014/07/27/201407250/#disqus_thread" class="article-comment-link">Comments</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ios/">ios</a></li></ul>
@@ -265,7 +257,7 @@
       <ul>
         
           <li>
-            <a href="/2014/07/27/2014072511/">objectc之runtime四川兄原创</a>
+            <a href="/2014/07/27/2014072520/">数组归类前提是已经排序好笑脸</a>
           </li>
         
           <li>
@@ -273,7 +265,7 @@
           </li>
         
           <li>
-            <a href="/2014/07/27/2014072520/">数组归类前提是已经排序好笑脸</a>
+            <a href="/2014/07/27/2014072511/">objectc之runtime四川兄原创</a>
           </li>
         
           <li>
