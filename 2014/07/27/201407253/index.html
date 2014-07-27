@@ -3,17 +3,17 @@
 <head>
   <meta charset="utf-8">
   
-  <title>tableview编辑状态下如何进去didselect方法笑脸 | iOS黑夜之路</title>
+  <title>instancesRespondToSelector与respondsToSelector注意点Only转载 | iOS黑夜之路</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1﻿self.tableView.allowsSelectionDuringEditing = YES;必须加上这一句，否则不会进去。">
+  <meta name="description" content="1﻿// main.m#import &lt;Foundation/Foundation.h&gt;@interface Test : NSObject-(void) objectFun;+(void) classFun;@end@implementation Test-(void) objectFun{}+(void) classFun{}@endint main(){BOOL ret;ret=">
 <meta property="og:type" content="article">
-<meta property="og:title" content="tableview编辑状态下如何进去didselect方法笑脸">
-<meta property="og:url" content="http://reqianduan.com//2014/07/27/2014072512/">
+<meta property="og:title" content="instancesRespondToSelector与respondsToSelector注意点Only转载">
+<meta property="og:url" content="http://reqianduan.com//2014/07/27/201407253/">
 <meta property="og:site_name" content="iOS黑夜之路">
-<meta property="og:description" content="1﻿self.tableView.allowsSelectionDuringEditing = YES;必须加上这一句，否则不会进去。">
+<meta property="og:description" content="1﻿// main.m#import &lt;Foundation/Foundation.h&gt;@interface Test : NSObject-(void) objectFun;+(void) classFun;@end@implementation Test-(void) objectFun{}+(void) classFun{}@endint main(){BOOL ret;ret=">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="tableview编辑状态下如何进去didselect方法笑脸">
-<meta name="twitter:description" content="1﻿self.tableView.allowsSelectionDuringEditing = YES;必须加上这一句，否则不会进去。">
+<meta name="twitter:title" content="instancesRespondToSelector与respondsToSelector注意点Only转载">
+<meta name="twitter:description" content="1﻿// main.m#import &lt;Foundation/Foundation.h&gt;@interface Test : NSObject-(void) objectFun;+(void) classFun;@end@implementation Test-(void) objectFun{}+(void) classFun{}@endint main(){BOOL ret;ret=">
 
   
     <link rel="alternative" href="/atom.xml" title="iOS黑夜之路" type="application/atom+xml">
@@ -64,10 +64,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-2014072512" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-201407253" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2014/07/27/2014072512/" class="article-date">
-  <time datetime="2014-07-27T02:10:21.000Z" itemprop="datePublished">Jul 27 2014</time>
+    <a href="/2014/07/27/201407253/" class="article-date">
+  <time datetime="2014-07-27T02:14:28.000Z" itemprop="datePublished">Jul 27 2014</time>
 </a>
     
   <div class="article-category">
@@ -82,7 +82,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      tableview编辑状态下如何进去didselect方法笑脸
+      instancesRespondToSelector与respondsToSelector注意点Only转载
     </h1>
   
 
@@ -90,15 +90,15 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">﻿<span class="keyword">self</span><span class="variable">.tableView</span><span class="variable">.allowsSelectionDuringEditing</span> = <span class="literal">YES</span>;必须加上这一句，否则不会进去。</div></pre></td></tr></table></figure>
+        <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">﻿/<span class="regexp">/ main.m#import &lt;Foundation/</span><span class="constant">Foundation</span>.h&gt;<span class="variable">@interface</span> <span class="constant">Test</span> <span class="symbol">:</span> <span class="constant">NSObject</span>-(void) objectFun;+(void) classFun;<span class="variable">@end</span><span class="variable">@implementation</span> <span class="constant">Test</span>-(void) objectFun{}+(void) classFun{}<span class="variable">@endint</span> main(){<span class="constant">BOOL</span> ret;ret=[<span class="constant">Test</span> <span class="symbol">instancesRespondToSelector:</span><span class="variable">@selector</span>(objectFun)];    <span class="regexp">//</span><span class="constant">YESret</span>=[<span class="constant">Test</span> <span class="symbol">instancesRespondToSelector:</span><span class="variable">@selector</span>(classFun)];    <span class="regexp">//</span><span class="constant">NOret</span>=[<span class="constant">Test</span> <span class="symbol">respondsToSelector:</span><span class="variable">@selector</span>(objectFun)];    <span class="regexp">//</span><span class="constant">NOret</span>=[<span class="constant">Test</span> <span class="symbol">respondsToSelector:</span><span class="variable">@selector</span>(classFun)];    <span class="regexp">//</span><span class="constant">YES</span>[<span class="constant">Test</span> classFun];<span class="regexp">//</span>[<span class="constant">Test</span> objectFun];<span class="regexp">//error</span><span class="symbol">:</span> <span class="constant">Class</span> method \<span class="string">'+objectFun\' not foundTest* obj    = [[Test alloc] init];ret=[obj respondsToSelector:@selector(objectFun)];    //YESret=[obj respondsToSelector:@selector(classFun)];    //NO//[obj classFun];//error: Instance method \'-classFun\' not found[obj objectFun];return 0;}总结：1. respondsToSelector既可以检查类（是否响应指定类方法），也可以检查实例（是否响应指定实例方法）2. instancesRespondToSelector只能写在类名后面，但检测的是实例（是否响应指定实例方法）可以认为[Test instancesRespondToSelector:sel]等价于[obj respondsToSelector:sel]</span></div></pre></td></tr></table></figure>
 
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://reqianduan.com/2014/07/27/2014072512/" data-id="ci4agj6p3niduj7o" class="article-share-link">Share</a>
+      <a data-url="http://reqianduan.com/2014/07/27/201407253/" data-id="8gqvpesxaevvlhqq" class="article-share-link">Share</a>
       
-        <a href="http://reqianduan.com/2014/07/27/2014072512/#disqus_thread" class="article-comment-link">Comments</a>
+        <a href="http://reqianduan.com/2014/07/27/201407253/#disqus_thread" class="article-comment-link">Comments</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ios/">ios</a></li></ul>
@@ -109,19 +109,19 @@
     
 <nav id="article-nav">
   
-    <a href="/2014/07/27/2014072515/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2014/07/27/201407256/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          UITextField设置placeholder颜色Only转载
+          (no title)
         
       </div>
     </a>
   
   
-    <a href="/2014/07/27/201407250/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2014/07/27/2014072523/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">9款优秀的免费测试框架帮你揪出app中的臭虫时光转帖</div>
+      <div class="article-nav-title">优质第三方组件收藏奋斗兄原创</div>
     </a>
   
 </nav>
@@ -251,7 +251,7 @@
 <script>
   var disqus_shortname = 'reqianduan';
   
-  var disqus_url = 'http://reqianduan.com/2014/07/27/2014072512/';
+  var disqus_url = 'http://reqianduan.com/2014/07/27/201407253/';
   
   (function(){
     var dsq = document.createElement('script');

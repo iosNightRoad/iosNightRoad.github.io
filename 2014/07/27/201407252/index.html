@@ -3,17 +3,17 @@
 <head>
   <meta charset="utf-8">
   
-  <title>tableview编辑状态下如何进去didselect方法笑脸 | iOS黑夜之路</title>
+  <title>GCD实现倒计时功能Only转载 | iOS黑夜之路</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1﻿self.tableView.allowsSelectionDuringEditing = YES;必须加上这一句，否则不会进去。">
+  <meta name="description" content="12345678910111213141516171819202122232425262728293031-(void)startTime{    __block int timeout=30; //倒计时时间    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);">
 <meta property="og:type" content="article">
-<meta property="og:title" content="tableview编辑状态下如何进去didselect方法笑脸">
-<meta property="og:url" content="http://reqianduan.com//2014/07/27/2014072512/">
+<meta property="og:title" content="GCD实现倒计时功能Only转载">
+<meta property="og:url" content="http://reqianduan.com//2014/07/27/201407252/">
 <meta property="og:site_name" content="iOS黑夜之路">
-<meta property="og:description" content="1﻿self.tableView.allowsSelectionDuringEditing = YES;必须加上这一句，否则不会进去。">
+<meta property="og:description" content="12345678910111213141516171819202122232425262728293031-(void)startTime{    __block int timeout=30; //倒计时时间    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="tableview编辑状态下如何进去didselect方法笑脸">
-<meta name="twitter:description" content="1﻿self.tableView.allowsSelectionDuringEditing = YES;必须加上这一句，否则不会进去。">
+<meta name="twitter:title" content="GCD实现倒计时功能Only转载">
+<meta name="twitter:description" content="12345678910111213141516171819202122232425262728293031-(void)startTime{    __block int timeout=30; //倒计时时间    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);">
 
   
     <link rel="alternative" href="/atom.xml" title="iOS黑夜之路" type="application/atom+xml">
@@ -64,10 +64,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-2014072512" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-201407252" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2014/07/27/2014072512/" class="article-date">
-  <time datetime="2014-07-27T02:10:21.000Z" itemprop="datePublished">Jul 27 2014</time>
+    <a href="/2014/07/27/201407252/" class="article-date">
+  <time datetime="2014-07-27T02:12:28.000Z" itemprop="datePublished">Jul 27 2014</time>
 </a>
     
   <div class="article-category">
@@ -82,7 +82,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      tableview编辑状态下如何进去didselect方法笑脸
+      GCD实现倒计时功能Only转载
     </h1>
   
 
@@ -90,15 +90,15 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">﻿<span class="keyword">self</span><span class="variable">.tableView</span><span class="variable">.allowsSelectionDuringEditing</span> = <span class="literal">YES</span>;必须加上这一句，否则不会进去。</div></pre></td></tr></table></figure>
+        <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">-(void)startTime{</div><div class="line">    __block int <span class="variable">timeout=</span><span class="number">30</span>; //倒计时时间</div><div class="line">    dispatch_queue_t <span class="variable">queue =</span> dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, <span class="number">0</span>);</div><div class="line">    dispatch_source_t <span class="variable">_timer =</span> dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, <span class="number">0</span>, <span class="number">0</span>,queue);</div><div class="line">    dispatch_source_set_timer(_timer,dispatch_walltime(NULL, <span class="number">0</span>),<span class="number">1.0</span>*NSEC_PER_SEC, <span class="number">0</span>); //每秒执行</div><div class="line">    dispatch_source_set_event_handler(_timer, ^{</div><div class="line">        <span class="keyword">if</span>(timeout&lt;=<span class="number">0</span>){ //倒计时结束，关闭</div><div class="line">            dispatch_source_cancel(_timer);</div><div class="line">            dispatch_async(dispatch_get_main_queue(), ^{</div><div class="line">                //设置界面的按钮显示 根据自己需求设置</div><div class="line">                [l_timeButton setTitle:@\<span class="string">"发送验证码\"</span> forState:UIControlStateNormal];</div><div class="line">                l_timeButton.<span class="variable">userInteractionEnabled =</span> YES;</div><div class="line">            });</div><div class="line">        }<span class="keyword">else</span>{</div><div class="line">            //            int <span class="variable">minutes =</span> timeout / <span class="number">60</span>;</div><div class="line">            int <span class="variable">seconds =</span> timeout % <span class="number">60</span>;</div><div class="line">            NSString *<span class="variable">strTime =</span> [NSString stringWithFormat:@\<span class="string">"%.2d\"</span>, seconds];</div><div class="line">            dispatch_async(dispatch_get_main_queue(), ^{</div><div class="line">                //设置界面的按钮显示 根据自己需求设置</div><div class="line">                NSLog(@\<span class="string">"____%@\"</span>,strTime);</div><div class="line">                [l_timeButton setTitle:[NSString stringWithFormat:@\<span class="string">"%@秒后重新发送\"</span>,strTime] forState:UIControlStateNormal];</div><div class="line">                l_timeButton.<span class="variable">userInteractionEnabled =</span> NO;</div><div class="line">                </div><div class="line">            });</div><div class="line">            timeout--;</div><div class="line">            </div><div class="line">        }</div><div class="line">    });</div><div class="line">    dispatch_resume(_timer);</div><div class="line">    </div><div class="line">}</div></pre></td></tr></table></figure>
 
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://reqianduan.com/2014/07/27/2014072512/" data-id="ci4agj6p3niduj7o" class="article-share-link">Share</a>
+      <a data-url="http://reqianduan.com/2014/07/27/201407252/" data-id="qcc1fwixbsxu558d" class="article-share-link">Share</a>
       
-        <a href="http://reqianduan.com/2014/07/27/2014072512/#disqus_thread" class="article-comment-link">Comments</a>
+        <a href="http://reqianduan.com/2014/07/27/201407252/#disqus_thread" class="article-comment-link">Comments</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ios/">ios</a></li></ul>
@@ -109,19 +109,19 @@
     
 <nav id="article-nav">
   
-    <a href="/2014/07/27/2014072515/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2014/07/27/2014072522/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          UITextField设置placeholder颜色Only转载
+          微信支付
         
       </div>
     </a>
   
   
-    <a href="/2014/07/27/201407250/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2014/07/27/2014072519/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">9款优秀的免费测试框架帮你揪出app中的臭虫时光转帖</div>
+      <div class="article-nav-title">检测app版本更新四川兄原创</div>
     </a>
   
 </nav>
@@ -251,7 +251,7 @@
 <script>
   var disqus_shortname = 'reqianduan';
   
-  var disqus_url = 'http://reqianduan.com/2014/07/27/2014072512/';
+  var disqus_url = 'http://reqianduan.com/2014/07/27/201407252/';
   
   (function(){
     var dsq = document.createElement('script');

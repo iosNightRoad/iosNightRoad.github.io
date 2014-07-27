@@ -3,17 +3,29 @@
 <head>
   <meta charset="utf-8">
   
-  <title>tableview编辑状态下如何进去didselect方法笑脸 | iOS黑夜之路</title>
+  <title>tableView设置可以滚动的背景图Only转载 | iOS黑夜之路</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1﻿self.tableView.allowsSelectionDuringEditing = YES;必须加上这一句，否则不会进去。">
+  <meta name="description" content="设置滚动背景图时，只要保证背景图在tableview中处于最低层。
+12345//iOS7 的一句就搞定了 [tableView insertSubview:tableBackGroundView atIndex:0];  //iOS6 [tableView insertSubview:tableBackGroundView atIndex:0];
+
+除此之外
+123- (UITableView">
 <meta property="og:type" content="article">
-<meta property="og:title" content="tableview编辑状态下如何进去didselect方法笑脸">
-<meta property="og:url" content="http://reqianduan.com//2014/07/27/2014072512/">
+<meta property="og:title" content="tableView设置可以滚动的背景图Only转载">
+<meta property="og:url" content="http://reqianduan.com//2014/07/27/2014072513/">
 <meta property="og:site_name" content="iOS黑夜之路">
-<meta property="og:description" content="1﻿self.tableView.allowsSelectionDuringEditing = YES;必须加上这一句，否则不会进去。">
+<meta property="og:description" content="设置滚动背景图时，只要保证背景图在tableview中处于最低层。
+12345//iOS7 的一句就搞定了 [tableView insertSubview:tableBackGroundView atIndex:0];  //iOS6 [tableView insertSubview:tableBackGroundView atIndex:0];
+
+除此之外
+123- (UITableView">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="tableview编辑状态下如何进去didselect方法笑脸">
-<meta name="twitter:description" content="1﻿self.tableView.allowsSelectionDuringEditing = YES;必须加上这一句，否则不会进去。">
+<meta name="twitter:title" content="tableView设置可以滚动的背景图Only转载">
+<meta name="twitter:description" content="设置滚动背景图时，只要保证背景图在tableview中处于最低层。
+12345//iOS7 的一句就搞定了 [tableView insertSubview:tableBackGroundView atIndex:0];  //iOS6 [tableView insertSubview:tableBackGroundView atIndex:0];
+
+除此之外
+123- (UITableView">
 
   
     <link rel="alternative" href="/atom.xml" title="iOS黑夜之路" type="application/atom+xml">
@@ -64,10 +76,10 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-2014072512" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-2014072513" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2014/07/27/2014072512/" class="article-date">
-  <time datetime="2014-07-27T02:10:21.000Z" itemprop="datePublished">Jul 27 2014</time>
+    <a href="/2014/07/27/2014072513/" class="article-date">
+  <time datetime="2014-07-27T02:12:28.000Z" itemprop="datePublished">Jul 27 2014</time>
 </a>
     
   <div class="article-category">
@@ -82,7 +94,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      tableview编辑状态下如何进去didselect方法笑脸
+      tableView设置可以滚动的背景图Only转载
     </h1>
   
 
@@ -90,15 +102,22 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">﻿<span class="keyword">self</span><span class="variable">.tableView</span><span class="variable">.allowsSelectionDuringEditing</span> = <span class="literal">YES</span>;必须加上这一句，否则不会进去。</div></pre></td></tr></table></figure>
+        <p>﻿设置滚动背景图时，只要保证背景图在tableview中处于最低层。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//iOS7 的一句就搞定了</span></div><div class="line"> <span class="attr_selector">[tableView insertSubview:tableBackGroundView atIndex:0]</span>; </div><div class="line"> </div><div class="line"><span class="comment">//iOS6</span></div><div class="line"> <span class="attr_selector">[tableView insertSubview:tableBackGroundView atIndex:0]</span>;</div></pre></td></tr></table></figure>
+
+<p>除此之外</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="pp">- <span class="params">(<span class="variable">UITableViewCell</span> *)</span>tableView:<span class="params">(<span class="variable">UITableView</span> *)</span>tableView cellForRowAtIndexPath:<span class="params">(<span class="variable">NSIndexPath</span> *)</span>indexPath；</span></div><div class="line">- <span class="params">(<span class="variable">UIView</span> *)</span>tableView:<span class="params">(<span class="variable">UITableView</span> *)</span>tableView viewForFooterInSection:<span class="params">(<span class="variable">NSInteger</span>)</span>section;</div><div class="line">- <span class="params">(<span class="variable">UIView</span> *)</span>tableView:<span class="params">(<span class="variable">UITableView</span> *)</span>tableView viewForHeaderInSection:<span class="params">(<span class="variable">NSInteger</span>)</span>section;</div></pre></td></tr></table></figure>
+
+<p>上面的三个方法若被调用则要在被调用的方法加一句</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="title">[tableView sendSubviewToBack:tableBackGroundView]</span><span class="comment">;</span></div></pre></td></tr></table></figure>
 
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://reqianduan.com/2014/07/27/2014072512/" data-id="ci4agj6p3niduj7o" class="article-share-link">Share</a>
+      <a data-url="http://reqianduan.com/2014/07/27/2014072513/" data-id="qy3reslt5xpieoe6" class="article-share-link">Share</a>
       
-        <a href="http://reqianduan.com/2014/07/27/2014072512/#disqus_thread" class="article-comment-link">Comments</a>
+        <a href="http://reqianduan.com/2014/07/27/2014072513/#disqus_thread" class="article-comment-link">Comments</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ios/">ios</a></li></ul>
@@ -109,19 +128,19 @@
     
 <nav id="article-nav">
   
-    <a href="/2014/07/27/2014072515/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2014/07/27/2014072510/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          UITextField设置placeholder颜色Only转载
+          iOS图片拉伸解决办法Only
         
       </div>
     </a>
   
   
-    <a href="/2014/07/27/201407250/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2014/07/27/201407258/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">9款优秀的免费测试框架帮你揪出app中的臭虫时光转帖</div>
+      <div class="article-nav-title">iOS开发各种库各种工具包输入兄转载</div>
     </a>
   
 </nav>
@@ -251,7 +270,7 @@
 <script>
   var disqus_shortname = 'reqianduan';
   
-  var disqus_url = 'http://reqianduan.com/2014/07/27/2014072512/';
+  var disqus_url = 'http://reqianduan.com/2014/07/27/2014072513/';
   
   (function(){
     var dsq = document.createElement('script');
