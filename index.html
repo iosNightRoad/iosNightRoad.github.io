@@ -66,104 +66,10 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-2014072520" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2014/07/27/2014072520/" class="article-date">
-  <time datetime="2014-07-27T02:14:28.000Z" itemprop="datePublished">Jul 27 2014</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/ios/">ios</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/07/27/2014072520/">数组归类前提是已经排序好笑脸</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>﻿这个方法可以将数组内元素相同的归位一类- (NSArray <em>)sort:(NSArray </em>)oldArr {</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="command">\tNSMutableArray</span> *newArr = <span class="special">[</span>NSMutableArray array<span class="special">]</span>;</div><div class="line"><span class="command">\tid</span> tmpObj;</div><div class="line"><span class="command">\ttmpObj</span> = oldArr.firstObject;</div><div class="line"><span class="command">\tNSMutableArray</span> *tmpArr = <span class="special">[</span>NSMutableArray array<span class="special">]</span>;</div><div class="line"><span class="command">\tfor</span> (int i = 0; i &lt; oldArr.count; i++) <span class="special">{</span></div><div class="line"><span class="command">\t</span><span class="command">\tif</span> (<span class="special">[</span>tmpObj isEqual:oldArr<span class="special">[</span>i<span class="special">]</span><span class="special">]</span>) <span class="special">{</span></div><div class="line"><span class="command">\t</span><span class="command">\t</span><span class="command">\t</span><span class="special">[</span>tmpArr addObject:oldArr<span class="special">[</span>i<span class="special">]</span><span class="special">]</span>;</div><div class="line"><span class="command">\t</span><span class="command">\t</span><span class="special">}</span></div><div class="line"><span class="command">\t</span><span class="command">\telse</span> <span class="special">{</span></div><div class="line"><span class="command">\t</span><span class="command">\t</span><span class="command">\t</span><span class="special">[</span>newArr addObject:tmpArr<span class="special">]</span>;</div><div class="line"><span class="command">\t</span><span class="command">\t</span><span class="command">\ttmpArr</span> = <span class="special">[</span>NSMutableArray array<span class="special">]</span>;</div><div class="line"><span class="command">\t</span><span class="command">\t</span><span class="command">\t</span><span class="special">[</span>tmpArr addObject:oldArr<span class="special">[</span>i<span class="special">]</span><span class="special">]</span>;</div><div class="line"><span class="command">\t</span><span class="command">\t</span><span class="command">\ttmpObj</span> = oldArr<span class="special">[</span>i<span class="special">]</span>;</div><div class="line"><span class="command">\t</span><span class="command">\t</span><span class="special">}</span></div><div class="line"><span class="command">\t</span><span class="special">}</span></div><div class="line"><span class="command">\t</span><span class="special">[</span>newArr addObject:tmpArr<span class="special">]</span>;</div><div class="line"><span class="command">\treturn</span> newArr;</div><div class="line"><span class="special">}</span></div></pre></td></tr></table></figure>
-
-<p>例子：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">NSArray <span class="variable">*arr</span> = <span class="variable">@[</span><span class="variable">@1</span>,<span class="variable">@1</span>,<span class="variable">@2</span>,<span class="variable">@2</span>,<span class="variable">@3</span>,<span class="variable">@3</span>];</div><div class="line">NSArray <span class="variable">*arr12</span> = [self <span class="keyword">sort</span>:arr];</div><div class="line">NSLog(<span class="variable">@\</span><span class="string">"%@\",arr12);</span></div></pre></td></tr></table></figure>
-
-<p>前提是顺序必须排好</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://reqianduan.com/2014/07/27/2014072520/" data-id="5eyd1it2whlfwuda" class="article-share-link">Share</a>
-      
-        <a href="http://reqianduan.com/2014/07/27/2014072520/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ios/">ios</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-2014072514" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2014/07/27/2014072514/" class="article-date">
-  <time datetime="2014-07-27T02:14:28.000Z" itemprop="datePublished">Jul 27 2014</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>title: “UILabel调间距only兄原创”tag: [ios]categories: ios—-</p>
-<figure class="highlight TextLayoutLabel"><figcaption><span>*label = [[TextlayoutLabel alloc] init];label.linesSpacing =  0.5;//此处就是间距</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="escape">``</span><span class="escape">`不</span>多说，粘源码..........................................................</div></pre></td></tr></table></figure>
-
-<p>\n#import <uikit uikit.h=""><br>\n</uikit></p>
-<p>\n@interface TextLayoutLabel : UILabel<br>\n{<br>\n@private<br>\n    CGFloat characterSpacing<em>;       //字间距<br>\n@private<br>\n    long linesSpacing</em>;   //行间距<br>\n}<br>\n@property(nonatomic,assign) CGFloat characterSpacing;<br>\n@property(nonatomic,assign)long linesSpacing;<br>\n@end</p>
-<p>\n</p>
-<p>\n#import \”TextLayoutLabel.h\”<br>\n#import <coretext coretext.h=""></coretext></p>
-<p>\n@implementation TextLayoutLabel<br>\n</p>
-<p>\n@synthesize characterSpacing = characterSpacing<em>;<br>\n@synthesize linesSpacing = linesSpacing</em>;<br>\n</p>
-<p>\n- (id)initWithFrame:(CGRect)frame<br>\n{<br>\n    self = [super initWithFrame:frame];<br>\n    if (self) {<br>\n<br>\n        //        self.characterSpacing = 2.0f;<br>\n        //        self.linesSpacing = 10.0f;<br>\n    }<br>\n    return self;<br>\n}<br>\n</p>
-<p>\n-(void)setCharacterSpacing:(CGFloat)characterSpacing //外部调用设置字间距<br>\n{<br>\n    characterSpacing_ = characterSpacing;<br>\n    [self setNeedsDisplay];<br>\n}<br>\n</p>
-<p>\n-(void)setLinesSpacing:(long)linesSpacing  //外部调用设置行间距<br>\n{<br>\n    linesSpacing_ = linesSpacing;<br>\n    [self setNeedsDisplay];<br>\n}<br>\n</p>
-<p>\n-(void) drawTextInRect:(CGRect)requestedRect<br>\n{<br>\n    //去掉空行<br>\n    NSString <em>labelString = self.text;<br>\n    NSString </em>myString = [labelString stringByReplacingOccurrencesOfString:@\”\r\n\” withString:@\”\n\”];<br>\n    //创建AttributeString<br>\n    NSMutableAttributedString *string =[[NSMutableAttributedString alloc]initWithString:myString];<br>\n    //设置字体及大小<br>\n    CTFontRef helveticaBold = CTFontCreateWithName((CFStringRef)self.font.fontName,self.font.pointSize,NULL);<br>\n    [string addAttribute:(id)kCTFontAttributeName value:(<strong>bridge id)helveticaBold range:NSMakeRange(0,[string length])];<br>\n    //设置字间距<br>\n    if(self.characterSpacing)<br>\n    {<br>\n        long number = self.characterSpacing;<br>\n        CFNumberRef num = CFNumberCreate(kCFAllocatorDefault,kCFNumberSInt8Type,&amp;number);<br>\n        [string addAttribute:(id)kCTKernAttributeName value:(</strong>bridge id)num range:NSMakeRange(0,[string length])];<br>\n        CFRelease(num);<br>\n    }<br>\n    //设置字体颜色<br>\n    [string addAttribute:(id)kCTForegroundColorAttributeName value:(id)(self.textColor.CGColor) range:NSMakeRange(0,[string length])];<br>\n    //创建文本对齐方式<br>\n    CTTextAlignment alignment = kCTLeftTextAlignment;<br>\n    if(self.textAlignment == UITextAlignmentCenter)<br>\n    {<br>\n        alignment = kCTCenterTextAlignment;<br>\n    }<br>\n    if(self.textAlignment == UITextAlignmentRight)<br>\n    {<br>\n        alignment = kCTRightTextAlignment;<br>\n    }<br>\n    CTParagraphStyleSetting alignmentStyle;<br>\n    alignmentStyle.spec = kCTParagraphStyleSpecifierAlignment;<br>\n    alignmentStyle.valueSize = sizeof(alignment);<br>\n    alignmentStyle.value = &alignment;<br>\n    //设置文本行间距<br>\n    CGFloat lineSpace = self.linesSpacing;<br>\n    CTParagraphStyleSetting lineSpaceStyle;<br>\n    lineSpaceStyle.spec = kCTParagraphStyleSpecifierLineSpacingAdjustment;<br>\n    lineSpaceStyle.valueSize = sizeof(lineSpace);<br>\n    lineSpaceStyle.value =&lineSpace;<br>\n    //设置文本段间距<br>\n    CGFloat paragraphSpacing = 5.0;<br>\n    CTParagraphStyleSetting paragraphSpaceStyle;<br>\n    paragraphSpaceStyle.spec = kCTParagraphStyleSpecifierParagraphSpacing;<br>\n    paragraphSpaceStyle.valueSize = sizeof(CGFloat);<br>\n    paragraphSpaceStyle.value = &paragraphSpacing;<br>\n<br>\n    //创建设置数组<br>\n    CTParagraphStyleSetting settings[ ] ={alignmentStyle,lineSpaceStyle,paragraphSpaceStyle};<br>\n    CTParagraphStyleRef style = CTParagraphStyleCreate(settings ,3);<br>\n    //给文本添加设置<br>\n    [string addAttribute:(id)kCTParagraphStyleAttributeName value:(__bridge id)style range:NSMakeRange(0 , [string length])];<br>\n    //排版<br>\n    CTFramesetterRef framesetter = CTFramesetterCreateWithAttributedString((CFAttributedStringRef)string);<br>\n    CGMutablePathRef leftColumnPath = CGPathCreateMutable();<br>\n    CGPathAddRect(leftColumnPath, NULL ,CGRectMake(0 , 0 ,self.bounds.size.width , self.bounds.size.height));<br>\n    CTFrameRef leftFrame = CTFramesetterCreateFrame(framesetter,CFRangeMake(0, 0), leftColumnPath , NULL);<br>\n    //翻转坐标系统（文本原来是倒的要翻转下）<br>\n    CGContextRef context = UIGraphicsGetCurrentContext();<br>\n    CGContextSetTextMatrix(context , CGAffineTransformIdentity);<br>\n    CGContextTranslateCTM(context , 0 ,self.bounds.size.height);<br>\n    CGContextScaleCTM(context, 1.0 ,-1.0);<br>\n    //画出文本<br>\n    CTFrameDraw(leftFrame,context);<br>\n    //释放<br>\n    CGPathRelease(leftColumnPath);<br>\n    //    CFReleale(framesetter);<br>\n    //    CFRelease(helveticaBold);<br>\n    UIGraphicsPushContext(context);<br>\n<br>\n}<br>\n</p>
-<p>\n@end</p>
-<p>```</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://reqianduan.com/2014/07/27/2014072514/" data-id="oihbcqhlebsz2ccc" class="article-share-link">Share</a>
-      
-        <a href="http://reqianduan.com/2014/07/27/2014072514/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
     <article id="post-2014072511" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2014/07/27/2014072511/" class="article-date">
-  <time datetime="2014-07-27T02:14:28.000Z" itemprop="datePublished">Jul 27 2014</time>
+  <time datetime="2014-07-27T02:20:39.000Z" itemprop="datePublished">Jul 27 2014</time>
 </a>
     
   <div class="article-category">
@@ -261,28 +167,16 @@
 <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">BB *b = [BB <span class="keyword">new</span>];</div><div class="line"><span class="comment">//我让b去继承cc的</span></div><div class="line">object_setClass(b, [CC <span class="keyword">class</span>]); <span class="comment">//实现方法。见(2)</span></div><div class="line"><span class="comment">//于是b就有了say的方法</span></div><div class="line">[b performSelector:@<span class="keyword">selector</span>(say)];</div><div class="line">CC *c = [CC <span class="keyword">new</span>];</div><div class="line"><span class="comment">//获取say的方法</span></div><div class="line"><span class="function"><span class="keyword">Method</span> <span class="title">methodSay</span> = <span class="title">class_getInstanceMethod</span><span class="params">([c <span class="keyword">class</span>], @<span class="keyword">selector</span>(say)</span>);</span></div><div class="line"><span class="function"><span class="keyword">Method</span> <span class="title">methodSing</span> = <span class="title">class_getInstanceMethod</span><span class="params">([c <span class="keyword">class</span>], @<span class="keyword">selector</span>(sing)</span>);</span></div><div class="line"><span class="comment">//交换2个方法</span></div><div class="line">method_exchangeImplementations(methodSay, methodSing); <span class="comment">//实现方法。见(3)</span></div><div class="line"><span class="comment">//于是有了结果的变化</span></div><div class="line">[c say];</div><div class="line">[c sing];</div><div class="line"><span class="comment">//b也跟着变了</span></div><div class="line">[b performSelector:@<span class="keyword">selector</span>(say)];</div></pre></td></tr></table></figure>
 
 <p>以上。</p>
-<p>(1)<br>c char<br>i  int<br>s short<br>l long<br>l is treated as a 32-bit quantity on 64-bit programs.<br>q long long<br>C unsigned char<br>I unsigned int<br>S unsigned short<br>L unsigned long<br>Q unsigned long long<br>f float<br>d double<br>B C++ bool or a C99 _Bool<br>v void</p>
-<ul>
-<li>character string (char *)<br>@ object (whether statically typed or typed id)<h1 id="class_object_(Class)">class object (Class)</h1>
-: method selector (SEL)<br>[array type] array<br>{name=type…} structure<br>(name=type…) A union<br>bnum bit field of num bits<br>^type pointer to type<br>? An unknown type (among other things, this code is used for function pointers)<br>PS:貌似@：组成了返回类型和形参的分割线。</li>
-</ul>
-<p>(2)</p>
-<p>Class object_setClass(id obj, Class cls)<br>{<br>    if (obj) {<br>        Class old;<br>        do {<br>            old = obj-&gt;isa;<br>        } while (! OSAtomicCompareAndSwapPtrBarrier(old, cls, (void*)&amp;obj-&gt;isa));<br>        return old;<br>    }<br>    else return Nil;<br>}</p>
-<p>(3)<br>void method_exchangeImplementations(Method m1_gen, Method m2_gen)<br>{<br>    IMP m1_imp;<br>    struct old_method <em>m1 = _method_asOld(m1_gen);<br>    struct old_method </em>m2 = _method_asOld(m2_gen);<br>    if (!m1  ||  !m2) return;</p>
-<pre><code><span class="keyword">if</span> (m1-&gt;method_name == (SEL)kIgnore  ||  m2-&gt;method_name == (SEL)kIgnore) {
-    <span class="comment">// Ignored methods stay ignored. Now they\'re both ignored.</span>
-    m1-&gt;method_imp = (IMP)&amp;<span class="number">_</span>objc_ignored_method;
-    m2-&gt;method_imp = (IMP)&amp;<span class="number">_</span>objc_ignored_method;
-    <span class="keyword">return</span>;
-}
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">(<span class="number">1</span>)</div><div class="line">c <span class="type">char</span></div><div class="line">i  <span class="type">int</span></div><div class="line">s short</div><div class="line">l long</div><div class="line">l <span class="keyword">is</span> treated <span class="keyword">as</span> a <span class="number">32</span>-bit quantity on <span class="number">64</span>-bit programs.</div><div class="line">q long long</div><div class="line">C unsigned <span class="type">char</span></div><div class="line">I unsigned <span class="type">int</span></div><div class="line">S unsigned short</div><div class="line">L unsigned long</div><div class="line">Q unsigned long long</div><div class="line">f <span class="type">float</span></div><div class="line">d double</div><div class="line">B C++ <span class="type">bool</span> <span class="keyword">or</span> a <span class="type">C99</span> _Bool</div><div class="line">v <span class="type">void</span></div><div class="line">* character <span class="type">string</span> (<span class="type">char</span> *)</div><div class="line">@ <span class="keyword">object</span> (whether statically typed <span class="keyword">or</span> typed id)</div><div class="line"><span class="comment"># class object (Class)</span></div><div class="line">: <span class="keyword">method</span> selector (<span class="type">SEL</span>)</div><div class="line">[<span class="type">array</span> <span class="keyword">type</span>] <span class="type">array</span></div><div class="line">{name=<span class="keyword">type</span>...} structure</div><div class="line">(name=<span class="keyword">type</span>...) A union</div><div class="line">bnum bit field <span class="keyword">of</span> num bits</div><div class="line">^<span class="keyword">type</span> <span class="type">pointer</span> to <span class="keyword">type</span></div><div class="line">? <span class="type">An</span> unknown <span class="keyword">type</span> (among other things, this code <span class="keyword">is</span> used <span class="keyword">for</span> function pointers)</div><div class="line"><span class="type">PS</span>:貌似@：组成了返回类型和形参的分割线。</div></pre></td></tr></table></figure>
 
 
-OSSpinLockLock(&amp;impLock);
-m1_imp = m1-&gt;method_imp;
-m1-&gt;method_imp = m2-&gt;method_imp;
-m2-&gt;method_imp = m1_imp;
-OSSpinLockUnlock(&amp;impLock);
-</code></pre><p>}</p>
+
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">Class</span> object_setClass(id obj, <span class="keyword">Class</span> cls)</div><div class="line">{</div><div class="line">    <span class="keyword">if</span> (obj) {</div><div class="line">        <span class="keyword">Class</span> old;</div><div class="line">        <span class="keyword">do</span> {</div><div class="line">            old = obj-&gt;isa;</div><div class="line">        } <span class="keyword">while</span> (! OSAtomicCompareAndSwapPtrBarrier(old, cls, (<span class="keyword">void</span>*)&obj-&gt;isa));</div><div class="line">        <span class="keyword">return</span> old;</div><div class="line">    }</div><div class="line">    <span class="keyword">else</span> <span class="keyword">return</span> Nil;</div><div class="line">}</div></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">void method_exchangeImplementations(Method m1_gen, Method m2_gen)</div><div class="line">{</div><div class="line">    IMP m1_imp;</div><div class="line">    <span class="keyword">struct</span> old_method *m1 = <span class="number">_</span>method_asOld(m1_gen);</div><div class="line">    <span class="keyword">struct</span> old_method *m2 = <span class="number">_</span>method_asOld(m2_gen);</div><div class="line">    <span class="keyword">if</span> (!m1  ||  !m2) <span class="keyword">return</span>;</div><div class="line"></div><div class="line"></div><div class="line">    <span class="keyword">if</span> (m1-&gt;method_name == (SEL)kIgnore  ||  m2-&gt;method_name == (SEL)kIgnore) {</div><div class="line">        <span class="comment">// Ignored methods stay ignored. Now they\'re both ignored.</span></div><div class="line">        m1-&gt;method_imp = (IMP)&<span class="number">_</span>objc_ignored_method;</div><div class="line">        m2-&gt;method_imp = (IMP)&<span class="number">_</span>objc_ignored_method;</div><div class="line">        <span class="keyword">return</span>;</div><div class="line">    }</div><div class="line"></div><div class="line"></div><div class="line">    OSSpinLockLock(&impLock);</div><div class="line">    m1_imp = m1-&gt;method_imp;</div><div class="line">    m1-&gt;method_imp = m2-&gt;method_imp;</div><div class="line">    m2-&gt;method_imp = m1_imp;</div><div class="line">    OSSpinLockUnlock(&impLock);</div><div class="line">}</div></pre></td></tr></table></figure>
+
 
       
     </div>
@@ -290,6 +184,101 @@ OSSpinLockUnlock(&amp;impLock);
       <a data-url="http://reqianduan.com/2014/07/27/2014072511/" data-id="7hr6l0xiiymdya8c" class="article-share-link">Share</a>
       
         <a href="http://reqianduan.com/2014/07/27/2014072511/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ios/">ios</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2014072514" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/07/27/2014072514/" class="article-date">
+  <time datetime="2014-07-27T02:19:24.000Z" itemprop="datePublished">Jul 27 2014</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>title: “UILabel调间距only兄原创”<br>tag: [ios]</p>
+<h2 id="categories:_ios">categories: ios</h2>
+<figure class="highlight TextLayoutLabel"><figcaption><span>*label = [[TextlayoutLabel alloc] init];label.linesSpacing =  0.5;//此处就是间距</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="escape">``</span><span class="escape">`不</span>多说，粘源码..........................................................</div></pre></td></tr></table></figure>
+
+<p>\n#import <uikit uikit.h=""><br>\n</uikit></p>
+<p>\n@interface TextLayoutLabel : UILabel<br>\n{<br>\n@private<br>\n    CGFloat characterSpacing<em>;       //字间距<br>\n@private<br>\n    long linesSpacing</em>;   //行间距<br>\n}<br>\n@property(nonatomic,assign) CGFloat characterSpacing;<br>\n@property(nonatomic,assign)long linesSpacing;<br>\n@end</p>
+<p>\n</p>
+<p>\n#import \”TextLayoutLabel.h\”<br>\n#import <coretext coretext.h=""></coretext></p>
+<p>\n@implementation TextLayoutLabel<br>\n</p>
+<p>\n@synthesize characterSpacing = characterSpacing<em>;<br>\n@synthesize linesSpacing = linesSpacing</em>;<br>\n</p>
+<p>\n- (id)initWithFrame:(CGRect)frame<br>\n{<br>\n    self = [super initWithFrame:frame];<br>\n    if (self) {<br>\n<br>\n        //        self.characterSpacing = 2.0f;<br>\n        //        self.linesSpacing = 10.0f;<br>\n    }<br>\n    return self;<br>\n}<br>\n</p>
+<p>\n-(void)setCharacterSpacing:(CGFloat)characterSpacing //外部调用设置字间距<br>\n{<br>\n    characterSpacing_ = characterSpacing;<br>\n    [self setNeedsDisplay];<br>\n}<br>\n</p>
+<p>\n-(void)setLinesSpacing:(long)linesSpacing  //外部调用设置行间距<br>\n{<br>\n    linesSpacing_ = linesSpacing;<br>\n    [self setNeedsDisplay];<br>\n}<br>\n</p>
+<p>\n-(void) drawTextInRect:(CGRect)requestedRect<br>\n{<br>\n    //去掉空行<br>\n    NSString <em>labelString = self.text;<br>\n    NSString </em>myString = [labelString stringByReplacingOccurrencesOfString:@\”\r\n\” withString:@\”\n\”];<br>\n    //创建AttributeString<br>\n    NSMutableAttributedString *string =[[NSMutableAttributedString alloc]initWithString:myString];<br>\n    //设置字体及大小<br>\n    CTFontRef helveticaBold = CTFontCreateWithName((CFStringRef)self.font.fontName,self.font.pointSize,NULL);<br>\n    [string addAttribute:(id)kCTFontAttributeName value:(<strong>bridge id)helveticaBold range:NSMakeRange(0,[string length])];<br>\n    //设置字间距<br>\n    if(self.characterSpacing)<br>\n    {<br>\n        long number = self.characterSpacing;<br>\n        CFNumberRef num = CFNumberCreate(kCFAllocatorDefault,kCFNumberSInt8Type,&amp;number);<br>\n        [string addAttribute:(id)kCTKernAttributeName value:(</strong>bridge id)num range:NSMakeRange(0,[string length])];<br>\n        CFRelease(num);<br>\n    }<br>\n    //设置字体颜色<br>\n    [string addAttribute:(id)kCTForegroundColorAttributeName value:(id)(self.textColor.CGColor) range:NSMakeRange(0,[string length])];<br>\n    //创建文本对齐方式<br>\n    CTTextAlignment alignment = kCTLeftTextAlignment;<br>\n    if(self.textAlignment == UITextAlignmentCenter)<br>\n    {<br>\n        alignment = kCTCenterTextAlignment;<br>\n    }<br>\n    if(self.textAlignment == UITextAlignmentRight)<br>\n    {<br>\n        alignment = kCTRightTextAlignment;<br>\n    }<br>\n    CTParagraphStyleSetting alignmentStyle;<br>\n    alignmentStyle.spec = kCTParagraphStyleSpecifierAlignment;<br>\n    alignmentStyle.valueSize = sizeof(alignment);<br>\n    alignmentStyle.value = &alignment;<br>\n    //设置文本行间距<br>\n    CGFloat lineSpace = self.linesSpacing;<br>\n    CTParagraphStyleSetting lineSpaceStyle;<br>\n    lineSpaceStyle.spec = kCTParagraphStyleSpecifierLineSpacingAdjustment;<br>\n    lineSpaceStyle.valueSize = sizeof(lineSpace);<br>\n    lineSpaceStyle.value =&lineSpace;<br>\n    //设置文本段间距<br>\n    CGFloat paragraphSpacing = 5.0;<br>\n    CTParagraphStyleSetting paragraphSpaceStyle;<br>\n    paragraphSpaceStyle.spec = kCTParagraphStyleSpecifierParagraphSpacing;<br>\n    paragraphSpaceStyle.valueSize = sizeof(CGFloat);<br>\n    paragraphSpaceStyle.value = &paragraphSpacing;<br>\n<br>\n    //创建设置数组<br>\n    CTParagraphStyleSetting settings[ ] ={alignmentStyle,lineSpaceStyle,paragraphSpaceStyle};<br>\n    CTParagraphStyleRef style = CTParagraphStyleCreate(settings ,3);<br>\n    //给文本添加设置<br>\n    [string addAttribute:(id)kCTParagraphStyleAttributeName value:(__bridge id)style range:NSMakeRange(0 , [string length])];<br>\n    //排版<br>\n    CTFramesetterRef framesetter = CTFramesetterCreateWithAttributedString((CFAttributedStringRef)string);<br>\n    CGMutablePathRef leftColumnPath = CGPathCreateMutable();<br>\n    CGPathAddRect(leftColumnPath, NULL ,CGRectMake(0 , 0 ,self.bounds.size.width , self.bounds.size.height));<br>\n    CTFrameRef leftFrame = CTFramesetterCreateFrame(framesetter,CFRangeMake(0, 0), leftColumnPath , NULL);<br>\n    //翻转坐标系统（文本原来是倒的要翻转下）<br>\n    CGContextRef context = UIGraphicsGetCurrentContext();<br>\n    CGContextSetTextMatrix(context , CGAffineTransformIdentity);<br>\n    CGContextTranslateCTM(context , 0 ,self.bounds.size.height);<br>\n    CGContextScaleCTM(context, 1.0 ,-1.0);<br>\n    //画出文本<br>\n    CTFrameDraw(leftFrame,context);<br>\n    //释放<br>\n    CGPathRelease(leftColumnPath);<br>\n    //    CFReleale(framesetter);<br>\n    //    CFRelease(helveticaBold);<br>\n    UIGraphicsPushContext(context);<br>\n<br>\n}<br>\n</p>
+<p>\n@end</p>
+<p>```</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://reqianduan.com/2014/07/27/2014072514/" data-id="oihbcqhlebsz2ccc" class="article-share-link">Share</a>
+      
+        <a href="http://reqianduan.com/2014/07/27/2014072514/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2014072520" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2014/07/27/2014072520/" class="article-date">
+  <time datetime="2014-07-27T02:14:28.000Z" itemprop="datePublished">Jul 27 2014</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/ios/">ios</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/07/27/2014072520/">数组归类前提是已经排序好笑脸</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>﻿这个方法可以将数组内元素相同的归位一类- (NSArray <em>)sort:(NSArray </em>)oldArr {</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="command">\tNSMutableArray</span> *newArr = <span class="special">[</span>NSMutableArray array<span class="special">]</span>;</div><div class="line"><span class="command">\tid</span> tmpObj;</div><div class="line"><span class="command">\ttmpObj</span> = oldArr.firstObject;</div><div class="line"><span class="command">\tNSMutableArray</span> *tmpArr = <span class="special">[</span>NSMutableArray array<span class="special">]</span>;</div><div class="line"><span class="command">\tfor</span> (int i = 0; i &lt; oldArr.count; i++) <span class="special">{</span></div><div class="line"><span class="command">\t</span><span class="command">\tif</span> (<span class="special">[</span>tmpObj isEqual:oldArr<span class="special">[</span>i<span class="special">]</span><span class="special">]</span>) <span class="special">{</span></div><div class="line"><span class="command">\t</span><span class="command">\t</span><span class="command">\t</span><span class="special">[</span>tmpArr addObject:oldArr<span class="special">[</span>i<span class="special">]</span><span class="special">]</span>;</div><div class="line"><span class="command">\t</span><span class="command">\t</span><span class="special">}</span></div><div class="line"><span class="command">\t</span><span class="command">\telse</span> <span class="special">{</span></div><div class="line"><span class="command">\t</span><span class="command">\t</span><span class="command">\t</span><span class="special">[</span>newArr addObject:tmpArr<span class="special">]</span>;</div><div class="line"><span class="command">\t</span><span class="command">\t</span><span class="command">\ttmpArr</span> = <span class="special">[</span>NSMutableArray array<span class="special">]</span>;</div><div class="line"><span class="command">\t</span><span class="command">\t</span><span class="command">\t</span><span class="special">[</span>tmpArr addObject:oldArr<span class="special">[</span>i<span class="special">]</span><span class="special">]</span>;</div><div class="line"><span class="command">\t</span><span class="command">\t</span><span class="command">\ttmpObj</span> = oldArr<span class="special">[</span>i<span class="special">]</span>;</div><div class="line"><span class="command">\t</span><span class="command">\t</span><span class="special">}</span></div><div class="line"><span class="command">\t</span><span class="special">}</span></div><div class="line"><span class="command">\t</span><span class="special">[</span>newArr addObject:tmpArr<span class="special">]</span>;</div><div class="line"><span class="command">\treturn</span> newArr;</div><div class="line"><span class="special">}</span></div></pre></td></tr></table></figure>
+
+<p>例子：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">NSArray <span class="variable">*arr</span> = <span class="variable">@[</span><span class="variable">@1</span>,<span class="variable">@1</span>,<span class="variable">@2</span>,<span class="variable">@2</span>,<span class="variable">@3</span>,<span class="variable">@3</span>];</div><div class="line">NSArray <span class="variable">*arr12</span> = [self <span class="keyword">sort</span>:arr];</div><div class="line">NSLog(<span class="variable">@\</span><span class="string">"%@\",arr12);</span></div></pre></td></tr></table></figure>
+
+<p>前提是顺序必须排好</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://reqianduan.com/2014/07/27/2014072520/" data-id="5eyd1it2whlfwuda" class="article-share-link">Share</a>
+      
+        <a href="http://reqianduan.com/2014/07/27/2014072520/#disqus_thread" class="article-comment-link">Comments</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ios/">ios</a></li></ul>
@@ -668,7 +657,7 @@ OSSpinLockUnlock(&amp;impLock);
       <ul>
         
           <li>
-            <a href="/2014/07/27/2014072520/">数组归类前提是已经排序好笑脸</a>
+            <a href="/2014/07/27/2014072511/">objectc之runtime四川兄原创</a>
           </li>
         
           <li>
@@ -676,7 +665,7 @@ OSSpinLockUnlock(&amp;impLock);
           </li>
         
           <li>
-            <a href="/2014/07/27/2014072511/">objectc之runtime四川兄原创</a>
+            <a href="/2014/07/27/2014072520/">数组归类前提是已经排序好笑脸</a>
           </li>
         
           <li>
