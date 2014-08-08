@@ -3,17 +3,23 @@
 <head>
   <meta charset="utf-8">
   
-  <title>iOS黑夜之路</title>
+  <title>objectc之runtime四川兄原创 | iOS黑夜之路</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="qq call me message">
-<meta property="og:type" content="website">
-<meta property="og:title" content="iOS黑夜之路">
-<meta property="og:url" content="http://reqianduan.com//">
+  <meta name="description" content="####object-c之runtime最近看了些关于object-c（以下简称oc）的runtime文章，了解了些oc的原理，下面阐述下oc的一些机制
+引：
+\toc是一门简单的语言，95%是C。只是在语言层面上加了些关键字和语法。真正让oc如此强大的是它的运行时。它很小但却很强大。它的核心是消息分发。\t1、runtime是开源的。可以去down：http://opensource.appl">
+<meta property="og:type" content="article">
+<meta property="og:title" content="objectc之runtime四川兄原创">
+<meta property="og:url" content="http://reqianduan.com//2014/07/27/2014072511/">
 <meta property="og:site_name" content="iOS黑夜之路">
-<meta property="og:description" content="qq call me message">
+<meta property="og:description" content="####object-c之runtime最近看了些关于object-c（以下简称oc）的runtime文章，了解了些oc的原理，下面阐述下oc的一些机制
+引：
+\toc是一门简单的语言，95%是C。只是在语言层面上加了些关键字和语法。真正让oc如此强大的是它的运行时。它很小但却很强大。它的核心是消息分发。\t1、runtime是开源的。可以去down：http://opensource.appl">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="iOS黑夜之路">
-<meta name="twitter:description" content="qq call me message">
+<meta name="twitter:title" content="objectc之runtime四川兄原创">
+<meta name="twitter:description" content="####object-c之runtime最近看了些关于object-c（以下简称oc）的runtime文章，了解了些oc的原理，下面阐述下oc的一些机制
+引：
+\toc是一门简单的语言，95%是C。只是在语言层面上加了些关键字和语法。真正让oc如此强大的是它的运行时。它很小但却很强大。它的核心是消息分发。\t1、runtime是开源的。可以去down：http://opensource.appl">
 
   
     <link rel="alternative" href="/atom.xml" title="iOS黑夜之路" type="application/atom+xml">
@@ -64,60 +70,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-2014072520" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2014/07/27/2014072520/" class="article-date">
-  <time datetime="2014-07-27T03:02:33.000Z" itemprop="datePublished">Jul 27 2014</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/ios/">ios</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/07/27/2014072520/">数组归类前提是已经排序好笑脸</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>﻿这个方法可以将数组内元素相同的归位一类- (NSArray <em>)sort:(NSArray </em>)oldArr {</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">NSMutableArray</span> *newArr = [<span class="built_in">NSMutableArray</span> array];</div><div class="line"><span class="keyword">id</span> tmpObj;</div><div class="line">tmpObj = oldArr<span class="variable">.firstObject</span>;</div><div class="line"><span class="built_in">NSMutableArray</span> *tmpArr = [<span class="built_in">NSMutableArray</span> array];</div><div class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; oldArr<span class="variable">.count</span>; i++) {</div><div class="line"><span class="keyword">if</span> ([tmpObj isEqual:oldArr[i]]) {</div><div class="line">[tmpArr addObject:oldArr[i]];</div><div class="line">}</div><div class="line"><span class="keyword">else</span> {</div><div class="line">[newArr addObject:tmpArr];</div><div class="line">tmpArr = [<span class="built_in">NSMutableArray</span> array];</div><div class="line">[tmpArr addObject:oldArr[i]];</div><div class="line">tmpObj = oldArr[i];</div><div class="line">}</div><div class="line">}</div><div class="line">[newArr addObject:tmpArr];</div><div class="line"><span class="keyword">return</span> newArr;</div><div class="line">}</div></pre></td></tr></table></figure>
-
-<p>例子：</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">NSArray <span class="variable">*arr</span> = <span class="variable">@[</span><span class="variable">@1</span>,<span class="variable">@1</span>,<span class="variable">@2</span>,<span class="variable">@2</span>,<span class="variable">@3</span>,<span class="variable">@3</span>];</div><div class="line">NSArray <span class="variable">*arr12</span> = [self <span class="keyword">sort</span>:arr];</div><div class="line">NSLog(<span class="variable">@\</span><span class="string">"%@\",arr12);</span></div></pre></td></tr></table></figure>
-
-<p>前提是顺序必须排好</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://reqianduan.com/2014/07/27/2014072520/" data-id="5eyd1it2whlfwuda" class="article-share-link">Share</a>
-      
-        <a href="http://reqianduan.com/2014/07/27/2014072520/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ios/">ios</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-2014072511" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-2014072511" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2014/07/27/2014072511/" class="article-date">
   <time datetime="2014-07-27T03:02:33.000Z" itemprop="datePublished">Jul 27 2014</time>
@@ -134,8 +87,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/07/27/2014072511/">objectc之runtime四川兄原创</a>
+    <h1 class="article-title" itemprop="name">
+      objectc之runtime四川兄原创
     </h1>
   
 
@@ -242,375 +195,35 @@
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-201407259" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2014/07/27/201407259/" class="article-date">
-  <time datetime="2014-07-27T03:02:33.000Z" itemprop="datePublished">Jul 27 2014</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/ios/">ios</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+    <a href="/2014/07/27/2014072520/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/07/27/201407259/">ios手势密码四川兄原创</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>﻿</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"> <span class="symbol">#import</span> &lt;<span class="class">UIKit</span>/<span class="class">UIKit</span>.h&gt; <span class="symbol">#import</span> &lt;<span class="class">QuartzCore</span>/<span class="class">QuartzCore</span>.h&gt; @interface <span class="class">GesturePassword</span> : <span class="class">UIView</span> @property(nonatomic,strong)<span class="class">NSMutableArray</span> *recordMovePoints; @property(nonatomic,assign)void(^generatePassword)(<span class="class">GesturePassword</span> *, <span class="class">NSString</span> *); @property(nonatomic,strong)<span class="class">UIWindow</span> *currentWindow; @property(nonatomic,strong)<span class="class">NSString</span> *rightPwd; -(void)registNotifyHandle; -(void)hideSelf; -(void)showSelf; -(<span class="class">GesturePassword</span> *)initByFrame; @end </div><div class="line"><span class="symbol">#import</span> \<span class="comment">"GesturePassword.h\"</span> //记录触碰点 static <span class="class">NSMutableArray</span> *recordCricleViews = <span class="keyword">nil</span>; //是否允许绘图，因为起点必须先点击到圆圈上 static <span class="class">BOOL</span> canDraw = <span class="class">NO</span>; //基础tag，用来记录圆圈的tag，这个也用来组成密码 const static int <span class="class">PointBaseTag</span> = <span class="number">1</span>; //线宽 const static int <span class="class">LineWidth</span> = <span class="number">6</span>; <span class="symbol">#define</span> <span class="class">BetweenWithNumber</span>(<span class="class">V</span>,<span class="class">A</span>,<span class="class">B</span>) [[<span class="class">NSPredicate</span> <span class="method">predicateWithFormat:</span>@\<span class="comment">"self between {%f,%f}\"</span>,[(<span class="class">A</span>) floatValue],[(<span class="class">B</span>) floatValue]] <span class="method">evaluateWithObject:</span>(<span class="class">V</span>)] @implementation <span class="class">GesturePassword</span> @synthesize recordMovePoints,generatePassword,currentWindow,rightPwd; //注册通知， -(void)registNotifyHandle{ //    后台来的时候执行锁屏操作     [[<span class="class">NSNotificationCenter</span> defaultCenter] <span class="method">addObserver:</span><span class="keyword">self</span> <span class="method">selector:</span>@selector(showLockScreen) <span class="method">name:</span><span class="class">UIApplicationWillEnterForegroundNotification</span> <span class="method">object:</span><span class="keyword">nil</span>]; } -(void)showLockScreen{     static <span class="class">BOOL</span> hadAddSubview = <span class="class">NO</span>; //    如果是挂上了，就直封屏     if(hadAddSubview){         [<span class="keyword">self</span> showSelf];         return;     } //    挂在window上。     <span class="class">UIWindow</span> *statusWindow = [[[<span class="class">UIApplication</span> sharedApplication] delegate] window];     statusWindow.windowLevel = <span class="class">UIWindowLevelStatusBar</span>;     [statusWindow <span class="method">addSubview:</span><span class="keyword">self</span>];     hadAddSubview = <span class="class">YES</span>; }  //初始化。 -(<span class="class">GesturePassword</span> *)initByFrame{     if((<span class="keyword">self</span> = [<span class="keyword">self</span> <span class="method">initWithFrame:</span>[[<span class="class">UIScreen</span> mainScreen] bounds]])){     }     return <span class="keyword">self</span>; } //初始化frame。 - (id)<span class="method">initWithFrame:</span>(<span class="class">CGRect</span>)frame {     <span class="keyword">self</span> = [<span class="keyword">super</span> <span class="method">initWithFrame:</span>frame];     recordMovePoints = [<span class="class">NSMutableArray</span> array];     if (<span class="keyword">self</span>) {         recordCricleViews = [<span class="class">NSMutableArray</span> array];         <span class="class">UIPanGestureRecognizer</span> *panGesture = [[<span class="class">UIPanGestureRecognizer</span> alloc] <span class="method">initWithTarget:</span><span class="keyword">self</span> <span class="method">action:</span>@selector(<span class="method">gestPanGesture:</span>)];         panGesture.minimumNumberOfTouches = panGesture.maximumNumberOfTouches = <span class="number">1</span>;         [<span class="keyword">self</span> <span class="method">addGestureRecognizer:</span>panGesture];         int i = <span class="number">0</span>,row=-<span class="number">1</span>;         float w = <span class="keyword">self</span>.frame.size.width, h = <span class="keyword">self</span>.frame.size.height, radius = <span class="number">20</span> , diameter = radius * <span class="number">2</span>;         //            算出每个物体之间的左右间距、         float spearX  = (w - (diameter * <span class="number">3</span>)) / <span class="number">4</span>,spearY = (h - (diameter * <span class="number">3</span>)) / <span class="number">4</span>;         while (i&lt;<span class="number">9</span>) {             int step = i%<span class="number">3</span>;             if(step==<span class="number">0</span>)++row;             float tempX = (step + <span class="number">1</span>) * spearX + step * diameter,tempY = (row+<span class="number">1</span>) * spearY + row * diameter;             @autoreleasepool {                 <span class="class">CGRect</span> tempRect = <span class="class">CGRectMake</span>(tempX, tempY, diameter, diameter);                 <span class="class">UIView</span> *cricleView = [[<span class="class">UIView</span> alloc] <span class="method">initWithFrame:</span>tempRect];                 cricleView.tag = <span class="class">PointBaseTag</span> + i ;                 cricleView.layer.cornerRadius = radius;                 cricleView.backgroundColor = [<span class="class">UIColor</span> grayColor];                 [<span class="keyword">self</span> <span class="method">addSubview:</span>cricleView];                 [recordCricleViews <span class="method">addObject:</span>cricleView];             }             ++i;         }     }     return <span class="keyword">self</span>; } //是否和几个目标物发生碰撞 -(<span class="class">UIView</span> *)<span class="method">hasTouchCricleView:</span>(<span class="class">CGPoint</span>)point{     __block <span class="class">UIView</span> *resultView = <span class="keyword">nil</span>;     [recordCricleViews  <span class="method">enumerateObjectsUsingBlock:</span>^(<span class="class">UIView</span> *sview,<span class="class">NSUInteger</span> index,<span class="class">BOOL</span> *stop){         if([<span class="keyword">self</span> <span class="method">rectsTouched:</span>point <span class="method">eimRect:</span>sview.frame]){             resultView = sview;             *stop = <span class="class">YES</span>;         }     }];     return resultView; } //检测当前点击坐标和物体是否碰撞 -(<span class="class">BOOL</span>)<span class="method">rectsTouched:</span>(<span class="class">CGPoint</span> )pointA <span class="method">eimRect:</span>(<span class="class">CGRect</span>)rectB{     <span class="class">BOOL</span> inX = <span class="class">BetweenWithNumber</span>(@(pointA.x),@(rectB.origin.x),@(rectB.origin.x + rectB.size.width)),                 inY = <span class="class">BetweenWithNumber</span>(@(pointA.y),@(rectB.origin.y),@(rectB.origin.y + rectB.size.height));     return inX && inY; } //拖动手势 -(void)<span class="method">gestPanGesture:</span>(<span class="class">UIPanGestureRecognizer</span> *)pan{ //    松开     if(pan.state == <span class="class">UIGestureRecognizerStateEnded</span>){         [recordCricleViews <span class="method">enumerateObjectsUsingBlock:</span>^(<span class="class">UIView</span> *tview,<span class="class">NSUInteger</span> index,<span class="class">BOOL</span> *stop){             [tview <span class="method">setBackgroundColor:</span>[<span class="class">UIColor</span> grayColor]];         }];         <span class="class">NSMutableString</span> *string = [<span class="class">NSMutableString</span> string];         [recordMovePoints <span class="method">enumerateObjectsUsingBlock:</span>^(<span class="class">NSArray</span> *array,<span class="class">NSUInteger</span> index,<span class="class">BOOL</span> *stop){ //            过滤掉<span class="number">0</span>             if([array[<span class="number">0</span>] intValue]&gt;<span class="number">0</span>)             [string <span class="method">appendFormat:</span>@\<span class="comment">"%d\"</span>,[array[<span class="number">0</span>] intValue]];         }];         recordMovePoints = <span class="keyword">nil</span>;         canDraw = <span class="class">NO</span>;         [<span class="keyword">self</span> setNeedsDisplay];         if(generatePassword){             generatePassword(<span class="keyword">self</span>,string);         }         return;     } //    按下     else if(pan.state == <span class="class">UIGestureRecognizerStateBegan</span>){         <span class="class">CGPoint</span> touchPoint  = [pan <span class="method">locationInView:</span>pan.view];         <span class="class">UIView</span> *tempTouchedView = [<span class="keyword">self</span> <span class="method">hasTouchCricleView:</span>touchPoint];         if(tempTouchedView){             recordMovePoints = [<span class="class">NSMutableArray</span> <span class="method">arrayWithObject:</span>@[@(tempTouchedView.tag),[<span class="class">NSValue</span> <span class="method">valueWithCGPoint:</span>tempTouchedView.center]]];             tempTouchedView.backgroundColor = [<span class="class">UIColor</span> greenColor];             canDraw = <span class="class">YES</span>;         }else{             canDraw = <span class="class">NO</span>;         }     } //    move。     else if(pan.state == <span class="class">UIGestureRecognizerStateChanged</span>){         if(!canDraw)return; //    判断拖动边界。         <span class="class">CGPoint</span> touchPoint  = [pan <span class="method">locationInView:</span>pan.view];         float dx = touchPoint.x,         dy = touchPoint.y; //        越界不能。         if(!<span class="class">BetweenWithNumber</span>(@(dx),@<span class="number">0</span>,@(<span class="keyword">self</span>.frame.size.width)) || !<span class="class">BetweenWithNumber</span>(@(dy),@<span class="number">0</span>,@(<span class="keyword">self</span>.frame.size.height)))return;         <span class="class">UIView</span> *tempTouchedView = [<span class="keyword">self</span> <span class="method">hasTouchCricleView:</span>touchPoint]; //        不能重复。                  if(tempTouchedView){             if([[recordMovePoints <span class="method">filteredArrayUsingPredicate:</span>[<span class="class">NSPredicate</span> <span class="method">predicateWithFormat:</span>@\<span class="comment">"self[0] ==%d\"</span>,tempTouchedView.tag]] count]==<span class="number">0</span>){                 if([[recordMovePoints lastObject][<span class="number">0</span>] intValue]==<span class="number">0</span>)[recordMovePoints <span class="method">removeObject:</span>[recordMovePoints lastObject]]; //                <span class="class">NSLog</span>(@\<span class="comment">"recordMovePoints:%@\"</span>,recordMovePoints);                 tempTouchedView.backgroundColor = [<span class="class">UIColor</span> greenColor];                 [recordMovePoints <span class="method">addObject:</span>@[@(tempTouchedView.tag),[<span class="class">NSValue</span> <span class="method">valueWithCGPoint:</span>tempTouchedView.center]]];                 [<span class="keyword">self</span> setNeedsDisplay];             }         }else{             if([[recordMovePoints lastObject][<span class="number">0</span>] intValue]==<span class="number">0</span>)[recordMovePoints <span class="method">removeObject:</span>[recordMovePoints lastObject]];             [recordMovePoints <span class="method">addObject:</span>@[@<span class="number">0</span>,[<span class="class">NSValue</span> <span class="method">valueWithCGPoint:</span>touchPoint]]];             [<span class="keyword">self</span> setNeedsDisplay];         }     } } -(void)hideSelf{     <span class="class">CGRect</span> rect = <span class="keyword">self</span>.frame;     rect.origin.y = [[<span class="class">UIScreen</span> mainScreen] applicationFrame].size.height + <span class="number">20</span>;     [<span class="class">UIView</span> <span class="method">animateWithDuration:</span><span class="number">1</span> <span class="method">animations:</span>^{         [<span class="keyword">self</span> <span class="method">setFrame:</span>rect];     }]; } -(void)showSelf{     <span class="class">CGRect</span> rect = <span class="keyword">self</span>.frame;     rect.origin.y = <span class="number">0</span>;     [<span class="keyword">self</span> <span class="method">setFrame:</span>rect]; } //画图 -(void)<span class="method">drawRect:</span>(<span class="class">CGRect</span>)rect{     <span class="class">CGContextRef</span> context = <span class="class">UIGraphicsGetCurrentContext</span>();     <span class="class">UIGraphicsBeginImageContextWithOptions</span>(<span class="keyword">self</span>.frame.size, <span class="class">YES</span>, <span class="number">1</span>); //    如果没有记录拖拽的点，就清空     if(recordMovePoints==<span class="keyword">nil</span> || recordMovePoints.count&lt;=<span class="number">1</span>){         <span class="class">CGContextSetFillColorWithColor</span>(context, <span class="keyword">self</span>.backgroundColor.<span class="class">CGColor</span>);         return <span class="class">CGContextFillPath</span>(context);     } //    设置圆滑拐角     <span class="class">CGContextSetLineJoin</span>(context, kCGLineJoinRound);     <span class="class">CGPoint</span> beginPoint = [recordMovePoints[<span class="number">0</span>][<span class="number">1</span>] <span class="class">CGPointValue</span>];     <span class="class">CGContextMoveToPoint</span>(context, beginPoint.x, beginPoint.y);     <span class="class">CGContextSetLineWidth</span>(context, <span class="class">LineWidth</span>);     <span class="class">CGContextSetStrokeColorWithColor</span>(context, [<span class="class">UIColor</span> yellowColor].<span class="class">CGColor</span>); //    开始画，根据点。     [recordMovePoints <span class="method">enumerateObjectsUsingBlock:</span>^(<span class="class">NSArray</span> *array,<span class="class">NSUInteger</span> index,<span class="class">BOOL</span> *stop){         <span class="class">CGPoint</span> tempPoint = [array[<span class="number">1</span>]  <span class="class">CGPointValue</span>];         <span class="class">CGContextAddLineToPoint</span>(context, tempPoint.x, tempPoint.y);     }];     <span class="class">CGContextStrokePath</span>(context); } @end 调用： <span class="class">GesturePassword</span> *pwdBoard = [[<span class="class">GesturePassword</span> alloc] initByFrame];     pwdBoard.backgroundColor = [<span class="class">UIColor</span> brownColor]; //    注册通知。     [pwdBoard registNotifyHandle];     pwdBoard.generatePassword = ^(<span class="class">GesturePassword</span> *passboard,<span class="class">NSString</span> *pwdString){         if([pwdString <span class="method">isEqualToString:</span>@\<span class="comment">"123456\"</span>]){             [passboard hideSelf];         }     };</div></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://reqianduan.com/2014/07/27/201407259/" data-id="8shgkc0au4ujdrxf" class="article-share-link">Share</a>
-      
-        <a href="http://reqianduan.com/2014/07/27/201407259/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ios/">ios</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-201407256" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2014/07/27/201407256/" class="article-date">
-  <time datetime="2014-07-27T03:02:33.000Z" itemprop="datePublished">Jul 27 2014</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>title: “ios黑夜之路技术群成就榜”tag: [ios]categories: ios—-\n\t命运像一丝细线，穿梭于茫茫人海，将你我窜成一线，相识在这里。\t时光流逝，大浪淘沙，勇于拼搏创新者，你们历尽艰辛，为了鼓励后人已此贴铭记、敬仰你们。</p>
-<h4 id="一、《猫狗大作战》">一、《猫狗大作战》</h4>
-<p>2014年5月6号，当哥同学已优秀的《猫狗大作战》萌系游戏荣获腾讯发文宣传</p>
-<p>文章地址:<a href="http://games.qq.com/a/20140506/050166.htm" target="_blank" rel="external">http://games.qq.com/a/20140506/050166.htm</a><br>优秀作品下载地址:<a href="http://app.lenovo.com/app/14497517.html" target="_blank" rel="external">http://app.lenovo.com/app/14497517.html</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://reqianduan.com/2014/07/27/201407256/" data-id="tztf2e34vqon5q1e" class="article-share-link">Share</a>
-      
-        <a href="http://reqianduan.com/2014/07/27/201407256/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-201407253" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2014/07/27/201407253/" class="article-date">
-  <time datetime="2014-07-27T03:02:33.000Z" itemprop="datePublished">Jul 27 2014</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/ios/">ios</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+          数组归类前提是已经排序好笑脸
         
+      </div>
+    </a>
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/07/27/201407253/">instancesRespondToSelector与respondsToSelector注意点Only转载</a>
-    </h1>
   
+    <a href="/2014/07/27/201407259/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">ios手势密码四川兄原创</div>
+    </a>
+  
+</nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">﻿/<span class="regexp">/ main.m#import &lt;Foundation/</span><span class="constant">Foundation</span>.h&gt;<span class="variable">@interface</span> <span class="constant">Test</span> <span class="symbol">:</span> <span class="constant">NSObject</span>-(void) objectFun;+(void) classFun;<span class="variable">@end</span><span class="variable">@implementation</span> <span class="constant">Test</span>-(void) objectFun{}+(void) classFun{}<span class="variable">@endint</span> main(){<span class="constant">BOOL</span> ret;ret=[<span class="constant">Test</span> <span class="symbol">instancesRespondToSelector:</span><span class="variable">@selector</span>(objectFun)];    <span class="regexp">//</span><span class="constant">YESret</span>=[<span class="constant">Test</span> <span class="symbol">instancesRespondToSelector:</span><span class="variable">@selector</span>(classFun)];    <span class="regexp">//</span><span class="constant">NOret</span>=[<span class="constant">Test</span> <span class="symbol">respondsToSelector:</span><span class="variable">@selector</span>(objectFun)];    <span class="regexp">//</span><span class="constant">NOret</span>=[<span class="constant">Test</span> <span class="symbol">respondsToSelector:</span><span class="variable">@selector</span>(classFun)];    <span class="regexp">//</span><span class="constant">YES</span>[<span class="constant">Test</span> classFun];<span class="regexp">//</span>[<span class="constant">Test</span> objectFun];<span class="regexp">//error</span><span class="symbol">:</span> <span class="constant">Class</span> method \<span class="string">'+objectFun\' not foundTest* obj    = [[Test alloc] init];ret=[obj respondsToSelector:@selector(objectFun)];    //YESret=[obj respondsToSelector:@selector(classFun)];    //NO//[obj classFun];//error: Instance method \'-classFun\' not found[obj objectFun];return 0;}总结：1. respondsToSelector既可以检查类（是否响应指定类方法），也可以检查实例（是否响应指定实例方法）2. instancesRespondToSelector只能写在类名后面，但检测的是实例（是否响应指定实例方法）可以认为[Test instancesRespondToSelector:sel]等价于[obj respondsToSelector:sel]</span></div></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://reqianduan.com/2014/07/27/201407253/" data-id="8gqvpesxaevvlhqq" class="article-share-link">Share</a>
-      
-        <a href="http://reqianduan.com/2014/07/27/201407253/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ios/">ios</a></li></ul>
-
-    </footer>
-  </div>
   
 </article>
 
 
-  
-    <article id="post-2014072523" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2014/07/27/2014072523/" class="article-date">
-  <time datetime="2014-07-27T03:02:33.000Z" itemprop="datePublished">Jul 27 2014</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/ios/">ios</a>
+<section id="comments">
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
   </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/07/27/2014072523/">优质第三方组件收藏奋斗兄原创</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>﻿####一、瀑布流<br><a href="http://applidium.github.io/ADLivelyCollectionView/" target="_blank" rel="external">http://applidium.github.io/ADLivelyCollectionView/</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://reqianduan.com/2014/07/27/2014072523/" data-id="knyx9644dm28yrms" class="article-share-link">Share</a>
-      
-        <a href="http://reqianduan.com/2014/07/27/2014072523/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ios/">ios</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-2014072517" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2014/07/27/2014072517/" class="article-date">
-  <time datetime="2014-07-27T03:02:33.000Z" itemprop="datePublished">Jul 27 2014</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/ios/">ios</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/07/27/2014072517/">VLCforios230编译时光原创</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>﻿<a href="https://wiki.videolan.org/iOSCompile" target="_blank" rel="external">https://wiki.videolan.org/iOSCompile</a> 这个是编译教程 但是由于某些下载被限制了要使用翻墙才能继续<br><a href="http://tenacy-free.com/public" target="_blank" rel="external">http://tenacy-free.com/public</a> 获取免费的翻墙账号密码(VPN)<br><a href="http://bbs.maiyadi.com/thread-879836-1-1.html" target="_blank" rel="external">http://bbs.maiyadi.com/thread-879836-1-1.html</a> mac下设置VPN操作</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://reqianduan.com/2014/07/27/2014072517/" data-id="0do00wccgezu8bjs" class="article-share-link">Share</a>
-      
-        <a href="http://reqianduan.com/2014/07/27/2014072517/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ios/">ios</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-2014072510" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2014/07/27/2014072510/" class="article-date">
-  <time datetime="2014-07-27T03:02:33.000Z" itemprop="datePublished">Jul 27 2014</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/ios/">ios</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/07/27/2014072510/">iOS图片拉伸解决办法Only</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>﻿这个方法可以使图片两端不拉伸，中间拉伸。解决图片拉伸变形问题,设置之后无论把image放到什么控件中都可以自动拉伸了</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">UIImage *<span class="variable">image =</span> [UIImage imageNamed:@\<span class="string">"ReceiverTextNodeBkg\"</span>];</div><div class="line"><span class="variable">image =</span> [image stretchableImageWithLeftCapWidth:floorf(image.size.width/<span class="number">2</span>) topCapHeight:floorf(image.size.height/<span class="number">2</span>)];</div></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://reqianduan.com/2014/07/27/2014072510/" data-id="k9ii4rjsxn5s14hc" class="article-share-link">Share</a>
-      
-        <a href="http://reqianduan.com/2014/07/27/2014072510/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ios/">ios</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-2014072513" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2014/07/27/2014072513/" class="article-date">
-  <time datetime="2014-07-27T03:02:33.000Z" itemprop="datePublished">Jul 27 2014</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/ios/">ios</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/07/27/2014072513/">tableView设置可以滚动的背景图Only转载</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>﻿设置滚动背景图时，只要保证背景图在tableview中处于最低层。</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//iOS7 的一句就搞定了</span></div><div class="line"> <span class="attr_selector">[tableView insertSubview:tableBackGroundView atIndex:0]</span>; </div><div class="line"> </div><div class="line"><span class="comment">//iOS6</span></div><div class="line"> <span class="attr_selector">[tableView insertSubview:tableBackGroundView atIndex:0]</span>;</div></pre></td></tr></table></figure>
-
-<p>除此之外</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="pp">- <span class="params">(<span class="variable">UITableViewCell</span> *)</span>tableView:<span class="params">(<span class="variable">UITableView</span> *)</span>tableView cellForRowAtIndexPath:<span class="params">(<span class="variable">NSIndexPath</span> *)</span>indexPath；</span></div><div class="line">- <span class="params">(<span class="variable">UIView</span> *)</span>tableView:<span class="params">(<span class="variable">UITableView</span> *)</span>tableView viewForFooterInSection:<span class="params">(<span class="variable">NSInteger</span>)</span>section;</div><div class="line">- <span class="params">(<span class="variable">UIView</span> *)</span>tableView:<span class="params">(<span class="variable">UITableView</span> *)</span>tableView viewForHeaderInSection:<span class="params">(<span class="variable">NSInteger</span>)</span>section;</div></pre></td></tr></table></figure>
-
-<p>上面的三个方法若被调用则要在被调用的方法加一句</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="title">[tableView sendSubviewToBack:tableBackGroundView]</span><span class="comment">;</span></div></pre></td></tr></table></figure>
-
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://reqianduan.com/2014/07/27/2014072513/" data-id="qy3reslt5xpieoe6" class="article-share-link">Share</a>
-      
-        <a href="http://reqianduan.com/2014/07/27/2014072513/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ios/">ios</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-201407258" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2014/07/27/201407258/" class="article-date">
-  <time datetime="2014-07-27T03:02:33.000Z" itemprop="datePublished">Jul 27 2014</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/ios/">ios</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/07/27/201407258/">iOS开发各种库各种工具包输入兄转载</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>﻿<a href="http://github.ibireme.com/github/list/ios/" target="_blank" rel="external">iOS开发各种库各种工具包输入兄转载</a><a href="http://github.ibireme.com/github/list/ios/" target="_blank" rel="external">http://github.ibireme.com/github/list/ios/</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://reqianduan.com/2014/07/27/201407258/" data-id="lrxiehftylf6jqlu" class="article-share-link">Share</a>
-      
-        <a href="http://reqianduan.com/2014/07/27/201407258/#disqus_thread" class="article-comment-link">Comments</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ios/">ios</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-  
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
-    </nav>
-  
+</section>
 </section>
         
           <aside id="sidebar">
@@ -728,11 +341,13 @@
 <script>
   var disqus_shortname = 'reqianduan';
   
+  var disqus_url = 'http://reqianduan.com/2014/07/27/2014072511/';
+  
   (function(){
     var dsq = document.createElement('script');
     dsq.type = 'text/javascript';
     dsq.async = true;
-    dsq.src = '//go.disqus.com/count.js';
+    dsq.src = '//go.disqus.com/embed.js';
     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
   })();
 </script>
